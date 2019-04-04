@@ -48,7 +48,8 @@ We will install the following distributed servers for sitecore.
 * Add a inbound rule for the port 8984 on the firewall
 
 ### Database
-* Install SQL Standard (make sure you setup an sa user)
+* Install SQL Standard or Developer Editon for DEV Environments (make sure you setup an sa user)
+  https://www.microsoft.com/de-ch/sql-server/sql-server-downloads
 * Install SSMS
 * Run the following SQL script:
 sp_configure 'contained database authentication', 1;
