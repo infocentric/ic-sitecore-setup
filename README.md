@@ -25,7 +25,6 @@ We will install the following distributed servers for sitecore.
 * Install Solr 7.2.1 (https://archive.apache.org/dist/lucene/solr/7.2.1/) at D:/solr
 * Install NSSM (https://nssm.cc/download) at C:\Program Files\nssm-2.24
 * Install JDK (https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
-  [OR OPENJDK 11]
 * Add C:\Program Files\nssm-2.24\win32 to the system PATH variable
 * Run D:\resources\sif\01-create-cert-solr.ps1
 * Copy the generated certificate for the solr server (ip adress) from D:\resources\certificates to D:\solr\server\etc
