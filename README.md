@@ -10,9 +10,10 @@ It offers two options.
 
 ## Setup the base
 * Clone this git repository to your machine to D:/resources
-* TODO: Download sif stuff
 * Copy the licence into the folder D:\resources\sif\lib
-* Run D:\resources\sif\00-install-sif.ps1 (confirm with 'Yes' if it asks you something)
+* TODO: Download sif stuff:
+  Run D:\resources\sif\00-install-sif.ps1 (confirm with 'Yes' if it asks you something)
+  Module will be installed to default location: C:\Program Files\WindowsPowerShell\Modules\SitecoreInstallFramework
 * Adjust parameters in D:/resources/sif/00-variables.ps1
 
 ## Distributed
@@ -20,13 +21,13 @@ We will install the following distributed servers for sitecore.
 
 ### Solr 
 * Follow the steps in "Setup the base"
-* Install IIS
+* Install IIS (will be done by Sitecore prerequisite script)
 * Install Solr 7.2.1 (https://archive.apache.org/dist/lucene/solr/7.2.1/) at D:/solr
 * Install NSSM (https://nssm.cc/download) at C:\Program Files\nssm-2.24
 * Install JDK (https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 * Add C:\Program Files\nssm-2.24\win32 to the system PATH variable
 * Run D:\resources\sif\01-create-cert-solr.ps1
-* Copy the generated certificate for the solr server (ip adress) in D:\resources\certificates to D:\solr\server\etc
+* Copy the generated certificate for the solr server (ip adress) from D:\resources\certificates to D:\solr\server\etc
 * Add the root certificate to the Trusted Root Certificate Authorities (How to: https://success.outsystems.com/Support/Enterprise_Customers/Installation/Install_a_trusted_root_CA__or_self-signed_certificate)
 * Adjust D:\solr\bin\solr.in.cmd and adjust the following lines (Type PKCS12 for .pfx):
 ** REM set SOLR_SSL_KEY_STORE=etc/solr-ssl.keystore.jks
@@ -43,6 +44,7 @@ We will install the following distributed servers for sitecore.
 * Check if solr is available at https://localhost:8984/solr/#/
 * Run D:\resources\sif\01-xconnect-solr.ps1
 * Run D:\resources\sif\01-sitecore-solr.ps1
+* OR Run D:\resources\sif\01-sitecore-solr-rebuild.ps1
 * Add a inbound rule for the port 8984 on the firewall
 
 ### Database
