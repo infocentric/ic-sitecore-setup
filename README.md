@@ -66,4 +66,6 @@ sp_configure 'contained database authentication', 1; RECONFIGURE
 * Add the root certificate to the Trusted Root Certificate Authorities (How to: https://success.outsystems.com/Support/Enterprise_Customers/Installation/Install_a_trusted_root_CA__or_self-signed_certificate)
 * Run D:\resources\sif\02-create-cert-ssl.ps1
 * Run D:\resources\sif\02-create-cert-xconnect.ps1
-* Run D:\resources\sif\02-xconnect.ps1
+* Run D:\resources\sif\02-xconnect.ps1 (workaround for running 02-xconnect.ps1 $XconnectDnsName = "your.dns.name" | "dev-xconnect-swica.infocentric.ch"
+  $CertName = $XconnectDnsName)
+Then replace with wildcard or propper certificate in IIS binding
