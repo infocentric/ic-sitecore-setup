@@ -12,7 +12,7 @@ It offers two options.
 * Clone this git repository to your machine to D:/resources
 * TODO: Download sif stuff
 * Copy the licence into the folder D:\resources\sif\lib
-* Run D:\resources\sif\00-install-sif.ps1 (confirm with 'Yes' if it asks you something)
+* Run D:\resources\ic-sitecore-setup\resources\sif\00-install-sif.ps1 (confirm with 'Yes' if it asks you something)
 * Adjust parameters in D:/resources/sif/00-variables.ps1
 
 ## Distributed
