@@ -28,7 +28,7 @@ We will install the following distributed servers for sitecore.
   [OR OPENJDK 11]
 * Add C:\Program Files\nssm-2.24\win32 to the system PATH variable
 * Run D:\resources\sif\01-create-cert-solr.ps1
-* Copy the generated certificate for the solr server (ip adress) in D:\resources\certificates to D:\solr\server\etc
+* Copy the generated certificate for the solr server (ip adress) from D:\resources\certificates to D:\solr\server\etc
 * Add the root certificate to the Trusted Root Certificate Authorities (How to: https://success.outsystems.com/Support/Enterprise_Customers/Installation/Install_a_trusted_root_CA__or_self-signed_certificate)
 * Adjust D:\solr\bin\solr.in.cmd and adjust the following lines (Type PKCS12 for .pfx):
 ** REM set SOLR_SSL_KEY_STORE=etc/solr-ssl.keystore.jks
