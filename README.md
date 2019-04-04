@@ -58,6 +58,7 @@ sp_configure 'contained database authentication', 1; RECONFIGURE
 * Add a inbound rule the port 1433 on the firewall
 
 ### XConnect
+* needs connection to Solr (Master) Server
 * Follow the steps in "Setup the base"
 * Install IIS. Run D:\resources\sif\00-prerequisites.ps1
 * Copy the certificates created in step "Solr" to D:\resources\certificates
