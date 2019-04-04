@@ -53,10 +53,7 @@ We will install the following distributed servers for sitecore.
 * Install SSMS
 * Enable mixed authentication
 * Run the following SQL script:
-sp_configure 'contained database authentication', 1;
-GO
-RECONFIGURE;
-GO
+sp_configure 'contained database authentication', 1; RECONFIGURE
 * Create a new admin user for the database (this one you will use later for the scripts)
 * Enable network TCP for the sql server (https://www.habaneroconsulting.com/stories/insights/2015/tcpip-is-disabled-by-default-in-microsoft-sql-server-2014)
 * Add a inbound rule the port 1433 on the firewall
