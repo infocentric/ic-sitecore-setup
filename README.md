@@ -10,9 +10,9 @@ It offers two options.
 
 ## Setup the base
 * Clone this git repository to your machine to D:/resources
-* TODO: Download sif stuff
 * Copy the licence into the folder D:\resources\ic-sitecore-setup\resources\sif\lib
-* Run D:\resources\ic-sitecore-setup\resources\sif\00-install-sif.ps1 (confirm with 'Yes' if it asks you something)
+* TODO: Download sif stuff:
+  Run D:\resources\ic-sitecore-setup\resources\sif\00-install-sif.ps1 (confirm with 'Yes' if it asks you something)
   Module will be installed to default location: C:\Program Files\WindowsPowerShell\Modules\SitecoreInstallFramework
 * Adjust parameters in D:/resources/sif/00-variables.ps1
 
