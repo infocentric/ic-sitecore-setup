@@ -44,6 +44,7 @@ We will install the following distributed servers for sitecore.
 * Check if solr is available at https://localhost:8984/solr/#/
 * Run D:\resources\sif\01-xconnect-solr.ps1
 * Run D:\resources\sif\01-sitecore-solr.ps1
+* OR Run D:\resources\sif\01-sitecore-solr-rebuild.ps1
 * Add a inbound rule for the port 8984 on the firewall
 
 ### Database
