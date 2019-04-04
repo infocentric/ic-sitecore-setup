@@ -61,6 +61,7 @@ sp_configure 'contained database authentication', 1; RECONFIGURE
 * Follow the steps in "Setup the base"
 * Install IIS. Run D:\resources\sif\00-prerequisites.ps1
 * Copy the certificates created in step "Solr" to D:\resources\certificates
+* Copy Sitecore 9.1.0 rev. 001564 (OnPrem)_xp0xconnect.scwdp.zip to D:\resources\libs
 * Add the root certificate to the Trusted Root Certificate Authorities (How to: https://success.outsystems.com/Support/Enterprise_Customers/Installation/Install_a_trusted_root_CA__or_self-signed_certificate)
 * Run D:\resources\sif\02-create-cert-ssl.ps1
 * Run D:\resources\sif\02-create-cert-xconnect.ps1
