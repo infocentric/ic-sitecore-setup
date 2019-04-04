@@ -21,7 +21,6 @@ We will install the following distributed servers for sitecore.
 
 ### Solr 
 * Follow the steps in "Setup the base"
-* Install IIS (will be done by Sitecore prerequisite script)
 * Install Solr 7.2.1 (https://archive.apache.org/dist/lucene/solr/7.2.1/) at D:/solr
 * Install NSSM (https://nssm.cc/download) at C:\Program Files\nssm-2.24
 * Install JDK (https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
@@ -60,7 +59,7 @@ sp_configure 'contained database authentication', 1; RECONFIGURE
 
 ### XConnect
 * Follow the steps in "Setup the base"
-* Install IIS
+* Install IIS. Run D:\resources\sif\00-prerequisites.ps1
 * Copy the certificates created in step "Solr" to D:\resources\certificates
 * Add the root certificate to the Trusted Root Certificate Authorities (How to: https://success.outsystems.com/Support/Enterprise_Customers/Installation/Install_a_trusted_root_CA__or_self-signed_certificate)
 * Run D:\resources\sif\02-create-cert-ssl.ps1
