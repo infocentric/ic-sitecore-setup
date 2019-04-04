@@ -51,6 +51,7 @@ We will install the following distributed servers for sitecore.
 * Install SQL Standard or Developer Editon for DEV Environments (make sure you setup an sa user)
   https://www.microsoft.com/de-ch/sql-server/sql-server-downloads
 * Install SSMS
+* Enable mixed authentication
 * Run the following SQL script:
 sp_configure 'contained database authentication', 1;
 GO
