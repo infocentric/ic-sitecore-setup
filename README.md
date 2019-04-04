@@ -21,7 +21,7 @@ We will install the following distributed servers for sitecore.
 
 ### Solr 
 * Follow the steps in "Setup the base"
-* Install IIS
+* Install IIS (will be done by Sitecore prerequisite script)
 * Install Solr 7.2.1 (https://archive.apache.org/dist/lucene/solr/7.2.1/) at D:/solr
 * Install NSSM (https://nssm.cc/download) at C:\Program Files\nssm-2.24
 * Install JDK (https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
