@@ -22,7 +22,7 @@
         }
     },
     "Variables": {
-        "Root.Cert.DnsName": "[concat('DO_NOT_TRUST_', parameter('RootCertFileName'))]",
+        "Root.Cert.DnsName": "[concat('SelfSigned_', parameter('RootCertFileName'))]",
         "Root.Cert.Store": "Cert:\\LocalMachine\\Root",
         "Client.Cert.Store": "Cert:\\LocalMachine\\My",
         "Export.Password": "[if(variable('User.Supplied.Password'),variable('Secure.Password'),variable('Convert.User.Password'))]",
