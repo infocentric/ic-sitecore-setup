@@ -9,6 +9,7 @@ $CertPassword = "icr"
 $CmDnsName = "int9-author-sulzer.infocentric.ch"
 $SolrDnsName = "dev-solr-swica-master.infocentric.ch"
 $XconnectDnsName = "dev-xconnect-swica.infocentric.ch"
+$PublishingServiceDnsName = "publishing-swica.infocentric.ch"
 $CertName = "infocentric.ch.pfx"
 # workaraound $CertName for 2.Xconnect: 
 # $CertName = $XconnectDnsName
@@ -21,6 +22,7 @@ $WebsPath="D:\webs\"
 
 $SitecoreSiteName = "$Prefix.sc"
 $XConnectCollectionService = "$Prefix.xconnect"
+$PublishingServiceSiteName = "$Prefix.publishing"
 
 $CertPath = "D:\resources\certificates"
 $SolrRootCert = "$SolrDnsName.root"
