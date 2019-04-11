@@ -62,7 +62,7 @@ sp_configure 'contained database authentication', 1; RECONFIGURE
 * Follow the steps in "Setup the base"
 * Install IIS. Run D:\resources\sif\00-prerequisites.ps1
 * Copy the certificates created in step "Solr" to D:\resources\certificates
-* Copy Sitecore 9.1.0 rev. 001564 (OnPrem)_xp0xconnect.scwdp.zip to D:\resources\libs
+* Copy "Sitecore 9.1.0 rev. 001564 (OnPrem)_xp0xconnect.scwdp.zip" to D:\resources\libs
 * Add the root certificate to the Trusted Root Certificate Authorities (How to: https://success.outsystems.com/Support/Enterprise_Customers/Installation/Install_a_trusted_root_CA__or_self-signed_certificate)
 * Run D:\resources\sif\02-create-cert-ssl.ps1
 * Run D:\resources\sif\02-create-cert-xconnect.ps1
@@ -70,10 +70,33 @@ sp_configure 'contained database authentication', 1; RECONFIGURE
   $CertName = $XconnectDnsName)
 Then replace with wildcard or propper certificate in IIS binding
 
+### IdentityService
+* needs connection to core databases (if you changed the connectionsstrings for this db's it needs most probably some adaptions in the scripts for identityserver as well)
+* Follow the steps in "Setup the base"
+* Install IIS. Run D:\resources\sif\00-prerequisites.ps1
+* Copy "Sitecore.IdentityServer 2.0.0 rev. 00157 (OnPrem)_identityserver.scwdp.zip" to D:\resources\libs
+* Run D:\resources\sif\05-create-cert-identity.ps1
+* Run D:\resources\sif\05-identity.ps1
+* Run D:\resources\sif\02-xconnect.ps1
+* Verify
+* * Open "$IdentityServerDnsName" (from "00-variables.ps1) in your browser
+* * Sitecore Login Page should appear
+* * Log in with Sitecore default Credentials
+* * Sitecore Login Page should appear
+* * Check "<IdentityServerWebRootDir>\logs" for errors and fix them (AntiforgeryToken errors are expected)
+* Set Log Level
+* * Open "<IdentityServerWebRootDir>\sitecorehost.xml"
+* * Set "Sitecore\Logging\SeriLog\MinimumLevel\Default" to "Warning" (Possible: Verbose, Debug, Information, Warning, Error, Fatal)
+* * Restart IIS Application Pool and recall Site in your browser
+
 ### Publishing Service
 * needs connection to master, web, and core databases (if you changed the connectionsstrings for this db's it needs most probably some adaptions in the scripts for publishingservice as well)
 * Follow the steps in "Setup the base"
 * Install IIS. Run D:\resources\sif\00-prerequisites.ps1
 * Extract the contents of the 'Sitecore Publishing Service 312 rev 190116x64.zip' to the web-directory of the later publishingservice
-* * normally this is "$WebsPath\"$PublishingServiceSiteName"
+* * normally this is "$WebsPath\\"$PublishingServiceSiteName"
 * Run D:\resources\publishingserver\01-publishingserver.ps1
+* Verify
+* * Open "$PublishingServiceDnsName/api/publishing/operations/status" in your Browser
+* * Should state "{""status"":0}"
+* * Check "<PubishingServerWebRootDir>\logs" for errors and fix them

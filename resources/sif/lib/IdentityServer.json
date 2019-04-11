@@ -74,6 +74,10 @@
             "Type": "string",
             "Reference": "SiteName",
             "Description": "The dns name of the site."
+        },
+        "InstallDir" :{
+            "Type": "string",
+            "Reference": "Install Dir"
         }
     },
     "Variables": {
@@ -81,7 +85,7 @@
         "Security.CertificateStore":                "Cert:\\Localmachine\\My",
         "Security.IdentityServer.CertificateThumbprint":  "[GetCertificateThumbprint(parameter('SitecoreIdentityCert'), variable('Security.CertificateStore'))]",
         "Security.IdentityServer.CertificatePath":        "[joinpath(variable('Security.CertificateStore'), variable('Security.IdentityServer.CertificateThumbprint'))]",
-        "Site.PhysicalPath": "[joinpath(environment('SystemDrive'), 'inetpub', 'wwwroot', parameter('SiteName'))]",
+        "Site.PhysicalPath": "[concat(parameter('InstallDir'), parameter('SiteName'))]",
         "Site.LicenseFolder": "[joinpath(variable('Site.PhysicalPath'), 'sitecoreruntime')]",
         "Site.ConfigFolder": "[joinpath(variable('Site.PhysicalPath'), 'Config', 'production')]",
 
