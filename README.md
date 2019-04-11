@@ -70,6 +70,14 @@ sp_configure 'contained database authentication', 1; RECONFIGURE
 * Check that the site is up
 * Check that all services are up (Troubleshoot: https://sitecore.stackexchange.com/questions/8561/xconnect-the-http-response-was-not-successful-unauthorized)
 
+### Publishing Service
+* needs connection to master, web, and core databases (if you changed the connectionsstrings for this db's it needs most probably some adaptions in the scripts for publishingservice as well)
+* Follow the steps in "Setup the base"
+* Install IIS. Run D:\resources\sif\00-prerequisites.ps1
+* Extract the contents of the 'Sitecore Publishing Service 312 rev 190116x64.zip' to the web-directory of the later publishingservice
+* * normally this is "$WebsPath\"$PublishingServiceSiteName"
+* Run D:\resources\publishingserver\01-publishingserver.ps1
+
 ### Sitecore CM
 * Needs connection to Solr (Master) Server and Xconnect and SQL
 * Follow the steps in "Setup the base"
