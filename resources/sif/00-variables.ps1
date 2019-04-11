@@ -1,14 +1,14 @@
 # Customer specific variables
 # Adjust for each project
-$Prefix = "swica"
-$SqlServerIp = "172.20.115.14"
-$SqlAdminUser ="sa"
-$SqlAdminPassword = "*n#Vk7Kg"
-$SqlDBPassword = "X#P3CtpN"
+$Prefix = "sulzer"
+$SqlServerIp = "172.20.20.128"
+$SqlAdminUser ="sitecore-admin"
+$SqlAdminPassword = "Infocentric123"
+$SqlDBPassword = "Infocentric123"
 $CertPassword = "icr"
 $CmDnsName = "int9-author-sulzer.infocentric.ch"
-$SolrDnsName = "dev-solr-swica-master.infocentric.ch"
-$XconnectDnsName = "dev-xconnect-swica.infocentric.ch"
+$SolrDnsName = "172.20.20.129"
+$XconnectDnsName = "172.20.20.130"
 $CertName = "infocentric.ch.pfx"
 # workaraound $CertName for 2.Xconnect: 
 # $CertName = $XconnectDnsName

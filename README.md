@@ -58,14 +58,22 @@ sp_configure 'contained database authentication', 1; RECONFIGURE
 * Add a inbound rule the port 1433 on the firewall
 
 ### XConnect
-* needs connection to Solr (Master) Server
+* needs connection to Solr (Master) Server and SQL
 * Follow the steps in "Setup the base"
 * Install IIS. Run D:\resources\sif\00-prerequisites.ps1
 * Copy the certificates created in step "Solr" to D:\resources\certificates
-* Copy Sitecore 9.1.0 rev. 001564 (OnPrem)_xp0xconnect.scwdp.zip to D:\resources\libs
 * Add the root certificate to the Trusted Root Certificate Authorities (How to: https://success.outsystems.com/Support/Enterprise_Customers/Installation/Install_a_trusted_root_CA__or_self-signed_certificate)
 * Run D:\resources\sif\02-create-cert-ssl.ps1
 * Run D:\resources\sif\02-create-cert-xconnect.ps1
-* Run D:\resources\sif\02-xconnect.ps1 (workaround for running 02-xconnect.ps1 $XconnectDnsName = "your.dns.name" | "dev-xconnect-swica.infocentric.ch"
-  $CertName = $XconnectDnsName)
-Then replace with wildcard or propper certificate in IIS binding
+* Run D:\resources\sif\02-xconnect.ps1
+* Then replace with wildcard or propper certificate in IIS binding
+* Check that the site is up
+* Check that all services are up (Troubleshoot: https://sitecore.stackexchange.com/questions/8561/xconnect-the-http-response-was-not-successful-unauthorized)
+
+### Sitecore CM
+* Needs connection to Solr (Master) Server and Xconnect and SQL
+* Follow the steps in "Setup the base"
+* Install IIS. Run D:\resources\sif\00-prerequisites.ps1
+* Copy the certificates created in step "Solr" and "Xconnect" to D:\resources\certificates
+* Add the root certificates to the Trusted Root Certificate Authorities (How to: https://success.outsystems.com/Support/Enterprise_Customers/Installation/Install_a_trusted_root_CA__or_self-signed_certificate)
+* Run D:\resources\sif\03-sitecore-cm.ps1
