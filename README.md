@@ -12,8 +12,16 @@ It offers two options.
 * Clone this git repository to your machine to D:/resources
 * Copy the licence into the folder D:\resources\sif\lib
 * TODO: Download sif stuff:
-  Run D:\resources\sif\00-install-sif.ps1 (confirm with 'Yes' if it asks you something)
-  Module will be installed to default location: C:\Program Files\WindowsPowerShell\Modules\SitecoreInstallFramework
+* Install SIF Module
+* * Run D:\resources\sif\00-install-sif.ps1 (confirm with 'Yes' if it asks you something)
+* * Module will be installed to default location: C:\Program Files\WindowsPowerShell\Modules\SitecoreInstallFramework
+* Download WebDeploy Packages from dev.sitecore.net and copy them to D:\resources\libs (if you use other versions, please adapt in all json-files as well)
+* * XConnect: "Sitecore 9.1.0 rev. 001564 (OnPrem)_xp0xconnect.scwdp.zip"
+* * Sitecore: "Sitecore 9.1.0 rev. 001564 (OnPrem)_single.scwdp.zip"
+* * IdentityService: "Sitecore.IdentityServer 2.0.0 rev. 00157 (OnPrem)_identityserver.scwdp.zip"
+* * PublishingService: "Sitecore Publishing Service 312 rev 190116x64.zip"
+* Install prerequisites:
+* * Run D:\resources\sif\00-prerequisites.ps1 (not needed for solr and database servers)
 * Adjust parameters in D:/resources/sif/00-variables.ps1
 
 ## Distributed
@@ -58,23 +66,20 @@ sp_configure 'contained database authentication', 1; RECONFIGURE
 * Add a inbound rule the port 1433 on the firewall
 
 ### XConnect
-* needs connection to Solr (Master) Server
+* needs connection to Solr (Master) Server and SQL
 * Follow the steps in "Setup the base"
-* Install IIS. Run D:\resources\sif\00-prerequisites.ps1
 * Copy the certificates created in step "Solr" to D:\resources\certificates
-* Copy "Sitecore 9.1.0 rev. 001564 (OnPrem)_xp0xconnect.scwdp.zip" to D:\resources\libs
 * Add the root certificate to the Trusted Root Certificate Authorities (How to: https://success.outsystems.com/Support/Enterprise_Customers/Installation/Install_a_trusted_root_CA__or_self-signed_certificate)
 * Run D:\resources\sif\02-create-cert-ssl.ps1
 * Run D:\resources\sif\02-create-cert-xconnect.ps1
-* Run D:\resources\sif\02-xconnect.ps1 (workaround for running 02-xconnect.ps1 $XconnectDnsName = "your.dns.name" | "dev-xconnect-swica.infocentric.ch"
-  $CertName = $XconnectDnsName)
-Then replace with wildcard or propper certificate in IIS binding
+* Run D:\resources\sif\02-xconnect.ps1
+* Then replace with wildcard or propper certificate in IIS binding
+* Check that the site is up
+* Check that all services are up (Troubleshoot: https://sitecore.stackexchange.com/questions/8561/xconnect-the-http-response-was-not-successful-unauthorized)
 
 ### IdentityService
 * needs connection to core databases (if you changed the connectionsstrings for this db's it needs most probably some adaptions in the scripts for identityserver as well)
 * Follow the steps in "Setup the base"
-* Install IIS. Run D:\resources\sif\00-prerequisites.ps1
-* Copy "Sitecore.IdentityServer 2.0.0 rev. 00157 (OnPrem)_identityserver.scwdp.zip" to D:\resources\libs
 * Run D:\resources\sif\05-create-cert-identity.ps1
 * Run D:\resources\sif\05-identity.ps1
 * Run D:\resources\sif\02-xconnect.ps1
@@ -92,7 +97,6 @@ Then replace with wildcard or propper certificate in IIS binding
 ### Publishing Service
 * needs connection to master, web, and core databases (if you changed the connectionsstrings for this db's it needs most probably some adaptions in the scripts for publishingservice as well)
 * Follow the steps in "Setup the base"
-* Install IIS. Run D:\resources\sif\00-prerequisites.ps1
 * Extract the contents of the 'Sitecore Publishing Service 312 rev 190116x64.zip' to the web-directory of the later publishingservice
 * * normally this is "$WebsPath\\"$PublishingServiceSiteName"
 * Run D:\resources\publishingserver\01-publishingserver.ps1
@@ -100,3 +104,10 @@ Then replace with wildcard or propper certificate in IIS binding
 * * Open "$PublishingServiceDnsName/api/publishing/operations/status" in your Browser
 * * Should state "{""status"":0}"
 * * Check "<PubishingServerWebRootDir>\logs" for errors and fix them
+
+### Sitecore CM
+* Needs connection to Solr (Master) Server and Xconnect and SQL
+* Follow the steps in "Setup the base"
+* Copy the certificates created in step "Solr" and "Xconnect" to D:\resources\certificates
+* Add the root certificates to the Trusted Root Certificate Authorities (How to: https://success.outsystems.com/Support/Enterprise_Customers/Installation/Install_a_trusted_root_CA__or_self-signed_certificate)
+* Run D:\resources\sif\03-sitecore-cm.ps1
