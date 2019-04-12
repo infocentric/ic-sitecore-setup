@@ -85,12 +85,27 @@ sp_configure 'contained database authentication', 1; RECONFIGURE
 * Check that the site is up
 * Check that all services are up (Troubleshoot: https://sitecore.stackexchange.com/questions/8561/xconnect-the-http-response-was-not-successful-unauthorized)
 
+### Sitecore CM
+* Needs connection to Solr (Master) Server and Xconnect and SQL
+* Follow the steps in "Setup the base"
+* Copy the certificates created in step "Solr" and "Xconnect" to D:\resources\certificates
+* Add the root certificates to the Trusted Root Certificate Authorities (How to: https://success.outsystems.com/Support/Enterprise_Customers/Installation/Install_a_trusted_root_CA__or_self-signed_certificate)
+* Run D:\resources\sif\03-sitecore-cm.ps1
+* Setup proper certifcate and https binding for the site
+
+### Sitecore CD
+* Needs connection to Solr (Slave) Server and Xconnect and SQL
+* Follow the steps in "Setup the base"
+* Copy the certificates created in step "Solr" and "Xconnect" to D:\resources\certificates
+* Add the root certificates to the Trusted Root Certificate Authorities (How to: https://success.outsystems.com/Support/Enterprise_Customers/Installation/Install_a_trusted_root_CA__or_self-signed_certificate)
+* Run D:\resources\sif\04-sitecore-cd.ps1
+* Setup proper certifcate and https binding for the site
+
 ### IdentityServer (optional)
 * needs connection to core databases (if you changed the connectionsstrings for this db's it needs most probably some adaptions in the scripts for identityserver as well)
 * Follow the steps in "Setup the base"
 * Run D:\resources\sif\05-create-cert-identity.ps1
-* Run D:\resources\sif\05-identity.ps1
-* Run D:\resources\sif\02-xconnect.ps1
+* Run D:\resources\sif\05-identityserver.ps1
 * Verify
 ** Open "$IdentityServerDnsName" (from "00-variables.ps1) in your browser
 ** Sitecore Login Page should appear
@@ -112,19 +127,3 @@ sp_configure 'contained database authentication', 1; RECONFIGURE
 ** Open "$PublishingServiceDnsName/api/publishing/operations/status" in your Browser
 ** Should state "{""status"":0}"
 ** Check "<PubishingServerWebRootDir>\logs" for errors and fix them
-
-### Sitecore CM
-* Needs connection to Solr (Master) Server and Xconnect and SQL
-* Follow the steps in "Setup the base"
-* Copy the certificates created in step "Solr" and "Xconnect" to D:\resources\certificates
-* Add the root certificates to the Trusted Root Certificate Authorities (How to: https://success.outsystems.com/Support/Enterprise_Customers/Installation/Install_a_trusted_root_CA__or_self-signed_certificate)
-* Run D:\resources\sif\03-sitecore-cm.ps1
-* Setup proper certifcate and https binding for the site
-
-### Sitecore CM
-* Needs connection to Solr (Master) Server and Xconnect and SQL
-* Follow the steps in "Setup the base"
-* Copy the certificates created in step "Solr" and "Xconnect" to D:\resources\certificates
-* Add the root certificates to the Trusted Root Certificate Authorities (How to: https://success.outsystems.com/Support/Enterprise_Customers/Installation/Install_a_trusted_root_CA__or_self-signed_certificate)
-* Run D:\resources\sif\04-sitecore-de.ps1
-* Setup proper certifcate and https binding for the site
