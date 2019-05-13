@@ -1,0 +1,58 @@
+{
+    "Parameters": {
+        "SolrUrl": {
+            "Type": "string",
+            "DefaultValue": "https://localhost:8983/solr",
+            "Description": "The Solr instance url."
+        },
+        "SolrRoot": {
+            "Type": "string",
+            "DefaultValue": "c:\\solr-7.2.1",
+            "Description": "The file path to the Solr instance."
+        },
+        "SolrService": {
+            "Type": "string",
+            "DefaultValue": "Solr-7.2.1",
+            "Description": "The name of the Solr service."
+        },
+        "BaseConfig": {
+            "Type": "string",
+            "DefaultValue": "_default",
+            "Description": "The configset to copy as a base for each core."
+        },
+        "CorePrefix": {
+            "Type": "string",
+            "DefaultValue": "sitecore",
+            "Description": "The prefix for each of the created indexes."
+        }
+    },
+    "Variables": {
+        "Solr.FullRoot":    "[resolvepath(parameter('SolrRoot'))]",
+        "Solr.Server":      "[joinpath(variable('Solr.FullRoot'), 'server', 'solr')]",
+        "Solr.BaseConfigs": "[joinpath(variable('Solr.Server'), 'configsets', parameter('BaseConfig'))]",
+        "Xdb.Name":         "[concat(parameter('CorePrefix'), '_xdb')]",
+        "Xdb.Rebuild.Name": "[concat(variable('Xdb.Name'), '_rebuild')]",
+        "Core.Root":        "[joinpath(variable('Solr.Server'), variable('Xdb.Name'))]",
+        "Rebuild.Root":     "[joinpath(variable('Solr.Server'), variable('Xdb.Rebuild.Name'))]"
+    },
+    "Tasks": {
+        "CreateCores":{
+            "Description" : "Tells Solr to create the new cores.",
+            "Type": "ManageSolrCore",
+            "Params": [
+                { "Action": "Create", "Address": "[parameter('SolrUrl')]", "Arguments": { "name": "[variable('Xdb.Name')]", "instanceDir": "[variable('Xdb.Name')]", "configSet": "basic_configs" } },
+                { "Action": "Create", "Address": "[parameter('SolrUrl')]", "Arguments": { "name": "[variable('Xdb.Rebuild.Name')]", "instanceDir": "[variable('Xdb.Rebuild.Name')]", "configSet": "basic_configs" } }
+            ]
+        }
+    },
+    "UninstallTasks": {
+        "RemoveCores": {
+            "Description": "Removes the cores and instance folders.",
+            "Type": "ManageSolrCore",
+            "Params": [
+                { "Action": "Unload", "Address": "[parameter('SolrUrl')]", "Arguments": { "core": "[variable('Xdb.Name')]", "deleteInstanceDir": "true" }, "ErrorAction": "SilentlyContinue" },
+                { "Action": "Unload", "Address": "[parameter('SolrUrl')]", "Arguments": { "core": "[variable('Xdb.Rebuild.Name')]", "deleteInstanceDir": "true" }, "ErrorAction": "SilentlyContinue" }
+            ]
+        }
+    }
+}
