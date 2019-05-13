@@ -24,6 +24,11 @@
             "Type": "string",
             "DefaultValue": "sitecore",
             "Description": "The prefix for each of the created indexes."
+        },
+        "SolrCoreConfigPath": {
+            "Type": "string",
+            "DefaultValue": "",
+            "Description": "The path of the default index."
         }
     },
     "Variables": {
@@ -95,28 +100,28 @@
             "Description": "Tells Solr to create the new cores.",
             "Type": "ManageSolrCore",
             "Params": [
-                { "Action": "Create", "Address": "[parameter('SolrUrl')]", "Arguments": { "core": "[variable('Core.Name')]", "instanceDir": "[variable('Core.Name')]", "configSet": "basic_configs" } },
-                { "Action": "Create", "Address": "[parameter('SolrUrl')]", "Arguments": { "core": "[variable('Master.Name')]", "instanceDir": "[variable('Master.Name')]", "configSet": "basic_configs" } },
-                { "Action": "Create", "Address": "[parameter('SolrUrl')]", "Arguments": { "core": "[variable('Web.Name')]", "instanceDir": "[variable('Web.Name')]", "configSet": "basic_configs" } },
-                { "Action": "Create", "Address": "[parameter('SolrUrl')]", "Arguments": { "core": "[variable('MD.Master.Name')]", "instanceDir": "[variable('MD.Master.Name')]", "configSet": "basic_configs" } },
-                { "Action": "Create", "Address": "[parameter('SolrUrl')]", "Arguments": { "core": "[variable('MD.Web.Name')]", "instanceDir": "[variable('MD.Web.Name')]", "configSet": "basic_configs" } },
-                { "Action": "Create", "Address": "[parameter('SolrUrl')]", "Arguments": { "core": "[variable('MA.Master.Name')]", "instanceDir": "[variable('MA.Master.Name')]", "configSet": "basic_configs" } },
-                { "Action": "Create", "Address": "[parameter('SolrUrl')]", "Arguments": { "core": "[variable('MA.Web.Name')]", "instanceDir": "[variable('MA.Web.Name')]", "configSet": "basic_configs" } },
-                { "Action": "Create", "Address": "[parameter('SolrUrl')]", "Arguments": { "core": "[variable('Testing.Name')]", "instanceDir": "[variable('Testing.Name')]", "configSet": "basic_configs" } },
-                { "Action": "Create", "Address": "[parameter('SolrUrl')]", "Arguments": { "core": "[variable('Suggested.Name')]", "instanceDir": "[variable('Suggested.Name')]", "configSet": "basic_configs" } },
-                { "Action": "Create", "Address": "[parameter('SolrUrl')]", "Arguments": { "core": "[variable('FXM.Master.Name')]", "instanceDir": "[variable('FXM.Master.Name')]", "configSet": "basic_configs" } },
-                { "Action": "Create", "Address": "[parameter('SolrUrl')]", "Arguments": { "core": "[variable('FXM.Web.Name')]", "instanceDir": "[variable('FXM.Web.Name')]", "configSet": "basic_configs" } },
-                { "Action": "Create", "Address": "[parameter('SolrUrl')]", "Arguments": { "name": "[variable('Rebuild.Core.Name')]", "instanceDir": "[variable('Rebuild.Core.Name')]", "configSet": "basic_configs" } },
-                { "Action": "Create", "Address": "[parameter('SolrUrl')]", "Arguments": { "name": "[variable('Rebuild.Master.Name')]", "instanceDir": "[variable('Rebuild.Master.Name')]", "configSet": "basic_configs" } },
-                { "Action": "Create", "Address": "[parameter('SolrUrl')]", "Arguments": { "name": "[variable('Rebuild.Web.Name')]", "instanceDir": "[variable('Rebuild.Web.Name')]", "configSet": "basic_configs" } },
-                { "Action": "Create", "Address": "[parameter('SolrUrl')]", "Arguments": { "name": "[variable('Rebuild.MD.Master.Name')]", "instanceDir": "[variable('Rebuild.MD.Master.Name')]", "configSet": "basic_configs" } },
-                { "Action": "Create", "Address": "[parameter('SolrUrl')]", "Arguments": { "name": "[variable('Rebuild.MD.Web.Name')]", "instanceDir": "[variable('Rebuild.MD.Web.Name')]", "configSet": "basic_configs" } },
-                { "Action": "Create", "Address": "[parameter('SolrUrl')]", "Arguments": { "name": "[variable('Rebuild.MA.Master.Name')]", "instanceDir": "[variable('Rebuild.MA.Master.Name')]", "configSet": "basic_configs" } },
-                { "Action": "Create", "Address": "[parameter('SolrUrl')]", "Arguments": { "name": "[variable('Rebuild.MA.Web.Name')]", "instanceDir": "[variable('Rebuild.MA.Web.Name')]", "configSet": "basic_configs" } },
-                { "Action": "Create", "Address": "[parameter('SolrUrl')]", "Arguments": { "name": "[variable('Rebuild.Testing.Name')]", "instanceDir": "[variable('Rebuild.Testing.Name')]", "configSet": "basic_configs" } },
-                { "Action": "Create", "Address": "[parameter('SolrUrl')]", "Arguments": { "name": "[variable('Rebuild.Suggested.Name')]", "instanceDir": "[variable('Rebuild.Suggested.Name')]", "configSet": "basic_configs" } },
-                { "Action": "Create", "Address": "[parameter('SolrUrl')]", "Arguments": { "name": "[variable('Rebuild.FXM.Master.Name')]", "instanceDir": "[variable('Rebuild.FXM.Master.Name')]", "configSet": "basic_configs" } },
-                { "Action": "Create", "Address": "[parameter('SolrUrl')]", "Arguments": { "name": "[variable('Rebuild.FXM.Web.Name')]", "instanceDir": "[variable('Rebuild.FXM.Web.Name')]", "configSet": "basic_configs" } }
+                { "Action": "Create", "Address": "[parameter('SolrUrl')]", "Arguments": { "core": "[variable('Core.Name')]", "instanceDir": "[variable('Core.Name')]", "configSet": "[parameter('SolrCoreConfigPath')]" } },
+                { "Action": "Create", "Address": "[parameter('SolrUrl')]", "Arguments": { "core": "[variable('Master.Name')]", "instanceDir": "[variable('Master.Name')]", "configSet": "[parameter('SolrCoreConfigPath')]" } },
+                { "Action": "Create", "Address": "[parameter('SolrUrl')]", "Arguments": { "core": "[variable('Web.Name')]", "instanceDir": "[variable('Web.Name')]", "configSet": "[parameter('SolrCoreConfigPath')]" } },
+                { "Action": "Create", "Address": "[parameter('SolrUrl')]", "Arguments": { "core": "[variable('MD.Master.Name')]", "instanceDir": "[variable('MD.Master.Name')]", "configSet": "[parameter('SolrCoreConfigPath')]" } },
+                { "Action": "Create", "Address": "[parameter('SolrUrl')]", "Arguments": { "core": "[variable('MD.Web.Name')]", "instanceDir": "[variable('MD.Web.Name')]", "configSet": "[parameter('SolrCoreConfigPath')]" } },
+                { "Action": "Create", "Address": "[parameter('SolrUrl')]", "Arguments": { "core": "[variable('MA.Master.Name')]", "instanceDir": "[variable('MA.Master.Name')]", "configSet": "[parameter('SolrCoreConfigPath')]" } },
+                { "Action": "Create", "Address": "[parameter('SolrUrl')]", "Arguments": { "core": "[variable('MA.Web.Name')]", "instanceDir": "[variable('MA.Web.Name')]", "configSet": "[parameter('SolrCoreConfigPath')]" } },
+                { "Action": "Create", "Address": "[parameter('SolrUrl')]", "Arguments": { "core": "[variable('Testing.Name')]", "instanceDir": "[variable('Testing.Name')]", "configSet": "[parameter('SolrCoreConfigPath')]" } },
+                { "Action": "Create", "Address": "[parameter('SolrUrl')]", "Arguments": { "core": "[variable('Suggested.Name')]", "instanceDir": "[variable('Suggested.Name')]", "configSet": "[parameter('SolrCoreConfigPath')]" } },
+                { "Action": "Create", "Address": "[parameter('SolrUrl')]", "Arguments": { "core": "[variable('FXM.Master.Name')]", "instanceDir": "[variable('FXM.Master.Name')]", "configSet": "[parameter('SolrCoreConfigPath')]" } },
+                { "Action": "Create", "Address": "[parameter('SolrUrl')]", "Arguments": { "core": "[variable('FXM.Web.Name')]", "instanceDir": "[variable('FXM.Web.Name')]", "configSet": "[parameter('SolrCoreConfigPath')]" } },
+                { "Action": "Create", "Address": "[parameter('SolrUrl')]", "Arguments": { "name": "[variable('Rebuild.Core.Name')]", "instanceDir": "[variable('Rebuild.Core.Name')]", "configSet": "[parameter('SolrCoreConfigPath')]" } },
+                { "Action": "Create", "Address": "[parameter('SolrUrl')]", "Arguments": { "name": "[variable('Rebuild.Master.Name')]", "instanceDir": "[variable('Rebuild.Master.Name')]", "configSet": "[parameter('SolrCoreConfigPath')]" } },
+                { "Action": "Create", "Address": "[parameter('SolrUrl')]", "Arguments": { "name": "[variable('Rebuild.Web.Name')]", "instanceDir": "[variable('Rebuild.Web.Name')]", "configSet": "[parameter('SolrCoreConfigPath')]" } },
+                { "Action": "Create", "Address": "[parameter('SolrUrl')]", "Arguments": { "name": "[variable('Rebuild.MD.Master.Name')]", "instanceDir": "[variable('Rebuild.MD.Master.Name')]", "configSet": "[parameter('SolrCoreConfigPath')]" } },
+                { "Action": "Create", "Address": "[parameter('SolrUrl')]", "Arguments": { "name": "[variable('Rebuild.MD.Web.Name')]", "instanceDir": "[variable('Rebuild.MD.Web.Name')]", "configSet": "[parameter('SolrCoreConfigPath')]" } },
+                { "Action": "Create", "Address": "[parameter('SolrUrl')]", "Arguments": { "name": "[variable('Rebuild.MA.Master.Name')]", "instanceDir": "[variable('Rebuild.MA.Master.Name')]", "configSet": "[parameter('SolrCoreConfigPath')]" } },
+                { "Action": "Create", "Address": "[parameter('SolrUrl')]", "Arguments": { "name": "[variable('Rebuild.MA.Web.Name')]", "instanceDir": "[variable('Rebuild.MA.Web.Name')]", "configSet": "[parameter('SolrCoreConfigPath')]" } },
+                { "Action": "Create", "Address": "[parameter('SolrUrl')]", "Arguments": { "name": "[variable('Rebuild.Testing.Name')]", "instanceDir": "[variable('Rebuild.Testing.Name')]", "configSet": "[parameter('SolrCoreConfigPath')]" } },
+                { "Action": "Create", "Address": "[parameter('SolrUrl')]", "Arguments": { "name": "[variable('Rebuild.Suggested.Name')]", "instanceDir": "[variable('Rebuild.Suggested.Name')]", "configSet": "[parameter('SolrCoreConfigPath')]" } },
+                { "Action": "Create", "Address": "[parameter('SolrUrl')]", "Arguments": { "name": "[variable('Rebuild.FXM.Master.Name')]", "instanceDir": "[variable('Rebuild.FXM.Master.Name')]", "configSet": "[parameter('SolrCoreConfigPath')]" } },
+                { "Action": "Create", "Address": "[parameter('SolrUrl')]", "Arguments": { "name": "[variable('Rebuild.FXM.Web.Name')]", "instanceDir": "[variable('Rebuild.FXM.Web.Name')]", "configSet": "[parameter('SolrCoreConfigPath')]" } }
             ]
         }
     },

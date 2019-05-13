@@ -8,6 +8,7 @@ $SqlAdminPassword = "ADD_SQL_ADMIN_PASSWORD"
 $SqlDBPassword = "ADD_DB_PASSWORD_FOR_OTHER_DBS"
 
 $SolrDnsName = "ADD_SOLR_DNS_OR_IP_ADDRESS"
+$SolrCoreConfigPath = "/opt/solr-7.2.1/server/solr/configsets/_default"
 $XconnectDnsName = "ADD_XCONNECT_DNS_OR_IP_ADDRESS"
 $CmDnsName = "ADD_CM_DNS_NAME"
 $CdDnsName = "ADD_CD_DNS_NAME"

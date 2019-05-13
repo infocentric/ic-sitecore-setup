@@ -6,6 +6,7 @@ $params = @{
     SolrRoot = $SolrRoot
     SolrService = $SolrService
     CorePrefix = $Prefix
+    SolrCoreConfigPath = $SolrCoreConfigPath
 }
 
 Install-SitecoreConfiguration @params

@@ -24,6 +24,11 @@
             "Type": "string",
             "DefaultValue": "sitecore",
             "Description": "The prefix for each of the created indexes."
+        },
+        "SolrCoreConfigPath": {
+            "Type": "string",
+            "DefaultValue": "",
+            "Description": "The path of the default index."
         }
     },
     "Variables": {
@@ -40,8 +45,8 @@
             "Description" : "Tells Solr to create the new cores.",
             "Type": "ManageSolrCore",
             "Params": [
-                { "Action": "Create", "Address": "[parameter('SolrUrl')]", "Arguments": { "name": "[variable('Xdb.Name')]", "instanceDir": "[variable('Xdb.Name')]", "configSet": "basic_configs" } },
-                { "Action": "Create", "Address": "[parameter('SolrUrl')]", "Arguments": { "name": "[variable('Xdb.Rebuild.Name')]", "instanceDir": "[variable('Xdb.Rebuild.Name')]", "configSet": "basic_configs" } }
+                { "Action": "Create", "Address": "[parameter('SolrUrl')]", "Arguments": { "name": "[variable('Xdb.Name')]", "instanceDir": "[variable('Xdb.Name')]", "configSet": "[parameter('SolrCoreConfigPath')]" } },
+                { "Action": "Create", "Address": "[parameter('SolrUrl')]", "Arguments": { "name": "[variable('Xdb.Rebuild.Name')]", "instanceDir": "[variable('Xdb.Rebuild.Name')]", "configSet": "[parameter('SolrCoreConfigPath')]" } }
             ]
         }
     },
